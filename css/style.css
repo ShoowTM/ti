@@ -81,10 +81,12 @@ ul {
     margin: auto;
     width: 80%;
     position: relative;
+    text-align: center
 }
 
 .centro img {
-    width: 100%
+    width: 50%
+    
 }
 
 .dentro {
@@ -95,6 +97,7 @@ ul {
 
 .centro hr {
     border-top: 0px solid rgba(0,0,0);
+   
 }
 
 .borderradius {

@@ -109,7 +109,7 @@ require_once('../inc/permissoes.php');
 
             <!-- Nav Item - Charts -->
             <li class="nav-item" style="display: <?= $google ?>;">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="pdados.php?pagina=4">
                     <i class="fab fa-fw fa-google"></i>
                     <span>Google</span>
                 </a>
