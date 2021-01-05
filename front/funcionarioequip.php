@@ -29,7 +29,8 @@ $result = $conn->query($queryEquipamento);
       <h6 class="m-0 font-weight-bold text-primary">
         Lista dos equipamentos
         <a href="checklist.php?pagina=3" class="float-right btn btn-warning" style="display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Check-list"><i class="fas fa-list"></i></a>
-        <a href="termo.php?pagina=3" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>         
+        <a href="termo.php?pagina=3" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>
+        <a href="#" class="float-right btn btn-success" style="margin-right: 10px;" title="Adicionar Novo Equipamento"><i class="fas fa-plus"></i></a>            
       </h6>
     </div>
     <div class="card-body">
