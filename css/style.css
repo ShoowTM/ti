@@ -1,0 +1,62 @@
+.logo{
+    margin-top: 39%;
+    padding-left: 48px;
+}
+
+.backgroundWhite{
+    background-color: white;
+}
+
+.colorBlack{
+    color: black;
+}
+.colorRed{
+    color: red;
+}
+.colorGrenn{
+    color: green;
+}
+ul {
+    list-style: none;
+    display: flex;
+}
+.data{   
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+.padding-top{
+    padding-top: 20px;
+}
+
+.left{
+    margin-left: 25%;
+}
+
+.paddingDez{
+    padding: 10px;
+}
+
+.text-decoration{
+    text-decoration: none !important;
+}
+
+.fd_logo{
+    margin-left: -80px;
+}
+
+.small-lither{
+    font-size: 10px;
+}
+
+.icone{ 
+    font-weight: bolder;
+}
+
+.padding-lither{
+    padding: 5px;
+}
+
+.float-rigth{
+    float: right;
+}
