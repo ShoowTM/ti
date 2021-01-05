@@ -4,7 +4,7 @@ require_once('header.php');
 require_once('../inc/permissoes.php');
 ?>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid py-4">
 
   <!-- Page Heading -->
   <h1 class="h6 mb-6 text-gray-800">
@@ -127,6 +127,7 @@ require_once('../inc/permissoes.php');
 <a class="scroll-to-top rounded" href="#page-top">
   <i class="fas fa-angle-up"></i>
 </a>
+
 </body>
 
 </html>

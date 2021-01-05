@@ -93,3 +93,11 @@ ul {
     top: 70%;
     left: 20%;
 }
+
+.top{
+    margin-top: 80px;
+}
+
+.menu{
+    font-size: 14px;
+}

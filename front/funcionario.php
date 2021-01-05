@@ -16,7 +16,7 @@ if (!empty($_SESSION['id_funcionario'])) {
 
 ?>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid py-4">
   <!-- Page Heading -->
   <h1 class="h6 mb-6 text-gray-800">
     <a href="../front/front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /

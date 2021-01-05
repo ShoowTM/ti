@@ -8,7 +8,7 @@ require_once('../inc/permissoes.php');
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h6 mb-6 text-gray-800">
+  <h1 class="menu mb-6 text-gray-800">
     <a href="front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <i class="fas fa-users"></i> Pesquisa
     <span class="float-rigth"><a href="colaboradores.php?pagina=3" id="atualiz"><i class="fas fa-sync-alt"></i> Atualizar</a></span>
