@@ -47,7 +47,7 @@ $resultLog = $conn->query($queryLog);
               <th>ALTERAÇÂO</th>
             </tr>
           </tfoot>
-          <tbody style="color: red;">
+          <tbody class="colorTable"">
             <?php
 
             while ($log = $resultLog->fetch_assoc()) {

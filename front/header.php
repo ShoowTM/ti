@@ -40,10 +40,13 @@ require_once('../inc/permissoes.php');
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
+
             <a class="sidebar-brand d-flex align-items-center justify-content-center backgroundWhite" href="front.php?pagina=1">
+                <div class="sidebar-brand-icon">
+                    <i class="fas fa-globe-americas colorBleu"></i>
+                </div>
                 <div class="sidebar-brand-text mx-3">
-                    <img src="../img/fd_logo.png" alt="fd_logo" class="fd_logo" id="fdLogo">
+                    <img src="../img/fd_logo.png" alt="fd_logo" id="fdLogo">
                 </div>
             </a>
 
@@ -222,8 +225,8 @@ require_once('../inc/permissoes.php');
                 <!-- Custom scripts for all pages-->
                 <script src="../js/sb-admin-2.min.js"></script>
 
-                 <!-- mascaras -->
-                 <script src="../js/mascara.js"></script>
+                <!-- mascaras -->
+                <script src="../js/mascara.js"></script>
 
 
                 <!-- Page level plugins -->

@@ -31,8 +31,8 @@ $result = $conn->query($queryEquipamento);
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">
         Lista dos equipamentos
-        <a href="#" class="float-right btn btn-warning" style="display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Check-list"><i class="fas fa-list"></i></a>
-        <a href="#" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>         
+        <a href="checklist.php?pagina=3" class="float-right btn btn-warning" style="display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Check-list"><i class="fas fa-list"></i></a>
+        <a href="termo.php?pagina=3" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>         
       </h6>
     </div>
     <div class="card-body">
@@ -160,16 +160,16 @@ $result = $conn->query($queryEquipamento);
                   </tfoot>';
           }
           ?>
-          <tbody class="colorRed">
+          <tbody class="colorTable">
             <?php
 
             while ($equipamento = $result->fetch_assoc()) {
 
               //ICONES TERMO
-              $equipamento['termo'] == 0 ? $termo = "<i class='fas fa-check colorGrenn'></i>" : $termo = "<i class='fas fa-times colorRed'></i>";
+              $equipamento['termo'] == 0 ? $termo = "<i class='fas fa-check-circle fa-2x colorGrenn' style='margin-left: 7px;'></i>" : $termo = "<i class='fas fa-times-circle fa-2x colorRed' style='margin-left: 7px;'></i>";
 
               //ICONES DOMINIO
-              $equipamento['dominio'] == 0 ? $dominio = "<i class='fas fa-check colorGrenn'></i>" : $dominio = "<i class='fas fa-times colorRed'></i>";
+              $equipamento['dominio'] == 0 ? $dominio = "<i class='fas fa-check-circle fa-2x colorGrenn' style='margin-left: px;'></i>" : $dominio = "<i class='fas fa-times-circle fa-2x colorRed' style='margin-left: 3px;'></i>";
 
               //OFFICE
               if ($equipamento['id_tipoEquipamento'] == 9 || $equipamento['id_tipoEquipamento'] == 8) {

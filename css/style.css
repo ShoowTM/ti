@@ -13,9 +13,20 @@
 .colorRed{
     color: red;
 }
+
+.colorTable{
+   color: #ff006a;
+}
+
 .colorGrenn{
     color: green;
 }
+
+.colorBleu{
+   color: #264ec1;
+}
+
+
 ul {
     list-style: none;
     display: flex;
