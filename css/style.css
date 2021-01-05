@@ -1,77 +1,95 @@
-.logo{
+.logo {
     margin-top: 39%;
     padding-left: 48px;
 }
 
-.backgroundWhite{
+.backgroundWhite {
     background-color: white;
 }
 
-.colorBlack{
+.colorBlack {
     color: black;
 }
-.colorRed{
+
+.colorRed {
     color: red;
 }
 
-.colorTable{
-   color: #ff006a;
+.colorTable {
+    color: #ff006a;
 }
 
-.colorGrenn{
+.colorGrenn {
     color: green;
 }
 
-.iconeLogo{
-   color: #797878;
+.iconeLogo {
+    color: #797878;
 }
-
 
 ul {
     list-style: none;
     display: flex;
 }
-.data{   
+
+.data {
     margin-top: 7px;
     margin-right: 10px;
 }
 
-.padding-top{
+.padding-top {
     padding-top: 20px;
 }
 
-.left{
+.left {
     margin-left: 25%;
 }
 
-.paddingDez{
+.paddingDez {
     padding: 10px;
 }
 
-.text-decoration{
+.text-decoration {
     text-decoration: none !important;
 }
 
-.fd_logo{
+.fd_logo {
     margin-left: -80px;
 }
 
-.small-lither{
+.small-lither {
     font-size: 10px;
 }
 
-.icone{ 
+.icone {
     font-weight: bolder;
 }
 
-.padding-lither{
+.padding-lither {
     padding: 5px;
 }
 
-.float-rigth{
+.float-rigth {
     float: right;
 }
 
-.maior{
+.maior {
     width: 110px !important;
+}
+
+.centro {
+    margin: auto;
+    width: 80%;
+    position: relative;
+}
+
+.centro img {
+    width: 100%
+}
+
+.dentro {
+    position: absolute;
+    padding: 10px;
+    top: 70%;
+    left: 20%;
 }
