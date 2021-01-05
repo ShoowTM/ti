@@ -43,7 +43,7 @@ require_once('../inc/permissoes.php');
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center backgroundWhite" href="front.php?pagina=1">
                 <div class="sidebar-brand-icon">
-                    <i class="fas fa-globe-americas colorBleu"></i>
+                    <i class="fas fa-globe-americas iconeLogo"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">
                     <img src="../img/fd_logo.png" alt="fd_logo" id="fdLogo">
