@@ -60,3 +60,7 @@ ul {
 .float-rigth{
     float: right;
 }
+
+.maior{
+    width: 110px !important;
+}

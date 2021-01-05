@@ -121,7 +121,7 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
               <th>STATUS</th>
-              <th>AÇÃO</th>
+              <th class="maior">AÇÃO</th>
             </tr>
           </thead>
           <tfoot>
@@ -134,7 +134,7 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
               <th>STATUS</th>
-              <th>AÇÃO</th>
+              <th  class="maior">AÇÃO</th>
             </tr>
           </tfoot>
           <tbody>
@@ -187,9 +187,9 @@ $demitido = $resultDemitido->fetch_assoc();
               }
 
               echo '<td>                    
-                      <a href="../inc/pesquisaFuncionario.php?id='.$colaborador['id_funcionario'].'" class="btn btn-success btn-pen-circle small-lither padding-lither" title="Editar" ><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-warning btn-trash-circle small-lither padding-lither" title="Check-List"><i class="fas fa-list-ul"></i></a>
-                      <a href="#" class="btn btn-info btn-trash-circle small-lither padding-lither" title="Termo"><i class="fas fa-file"></i></a>
+                      <a href="../inc/pesquisaFuncionario.php?id='.$colaborador['id_funcionario'].'" class="btn btn-success btn-sm btn-circle" title="Editar" ><i class="fas fa-pen"></i></a>
+                      <a href="#" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: '; echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block"; echo '"><i class="fas fa-list-ul"></i></a>
+                      <a href="#" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
                     </td>';
             }
             ?>

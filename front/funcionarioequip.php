@@ -32,7 +32,7 @@ $result = $conn->query($queryEquipamento);
       <h6 class="m-0 font-weight-bold text-primary">
         Lista dos equipamentos
         <a href="#" class="float-right btn btn-warning" style="display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Check-list"><i class="fas fa-list"></i></a>
-        <a href="#" class="float-right btn btn-info" style="margin-right: 10px; display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Termo"><i class="fas fa-file"></i></a>         
+        <a href="#" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>         
       </h6>
     </div>
     <div class="card-body">
@@ -253,8 +253,8 @@ $result = $conn->query($queryEquipamento);
                 }
                 /*AÇÂO*/
                 echo '<td>
-                        <a href="#" class="btn btn-success btn-pen-circle small-lither padding-lither" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
-                        <a href="#" class="btn btn-warning btn-trash-circle small-lither padding-lither" title="Check-List"><i class="fas fa-list-ul"></i></a>
+                        <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
+                        <a href="#" class="btn btn-warning btn-sm btn-circle" title="Check-List"><i class="fas fa-list-ul"></i></a>
                       </td>';
               } else {
                 echo '<tr>';
@@ -285,7 +285,7 @@ $result = $conn->query($queryEquipamento);
                 }
                 /*AÇÂO*/
                 echo '<td>
-                        <a href="#" class="btn btn-success btn-pen-circle small-lither padding-lither" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
+                        <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
                       </td>';
                 echo '</tr>';
               }
