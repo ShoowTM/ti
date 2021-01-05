@@ -188,8 +188,8 @@ $demitido = $resultDemitido->fetch_assoc();
 
               echo '<td>                    
                       <a href="../inc/pesquisaFuncionario.php?id='.$colaborador['id_funcionario'].'" class="btn btn-success btn-sm btn-circle" title="Editar" ><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: '; echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block"; echo '"><i class="fas fa-list-ul"></i></a>
-                      <a href="#" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
+                      <a href="checklist.php?id='.$colaborador['id_funcionario'].'" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: '; echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block"; echo '"><i class="fas fa-list-ul"></i></a>
+                      <a href="termo.php?id='.$colaborador['id_funcionario'].'" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
                     </td>';
             }
             ?>
