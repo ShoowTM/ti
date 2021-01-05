@@ -1,17 +1,10 @@
 ﻿<?php
-    /* //variaveis para conexao
-    $servername = "10.100.1.65";
-    $username = "manager";
-    $password = "Servopa123#";
-    $dbname = "manager";
-    $port = "3306"; */
-
     //variaveis para conexao
     $servername = "localhost";
     $username = "root";
-    $password = "qtbvar03";
-    $dbname = "manager";
-    $port = "3307";
+    $password = "*****";
+    $dbname = "*****";
+    $port = "*****";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
