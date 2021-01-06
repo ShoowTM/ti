@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors',1);
+/* ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
-error_reporting(E_ALL);
+error_reporting(E_ALL); */
 
 require_once('../bd/conexao.php');
 require_once('pesquisas.php');
@@ -83,8 +83,7 @@ $html = "
 						<th>MEMORIA</th>
 						<th>SISTEMA OPERACIONAL</th>
 						<th>OFFICE</th>			    
-                    </tr>                    
-                    <tr>";
+                    </tr>";
                     while ($equipamento = $resultEquip->fetch_assoc()) {
                         //Sistema Operacional
                         $queryso = "SELECT MSO.versao AS id_versao, MDSO.nome AS versao FROM  manager_sistema_operacional MSO LEFT JOIN manager_dropsistemaoperacional MDSO ON (MSO.versao = MDSO.id) WHERE MSO.id_equipamento = ".$equipamento['id_equipamento']."";
@@ -94,32 +93,33 @@ $html = "
                         //Office
                         $queryoffice = "SELECT MO.versao AS id_versao, MDO.nome AS versao FROM manager_office MO LEFT JOIN manager_dropoffice MDO ON (MO.versao = MDO.id) WHERE MO.id_equipamento = ".$equipamento['id_equipamento']."";
                         $resultoffice = $conn->query($queryoffice);
-                        $office  = $resultoffice->fetch_assoc();
-
-                        $html .= "<td>"; empty($equipamento['tipo_equipamento']) ? "---" : $equipamento['tipo_equipamento']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['numero']) ? "---" : $equipamento['numero']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['modelo']) ? "---" : $equipamento['modelo']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['patrimonio']) ? "---" : $equipamento['patrimonio']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['serialnumber']) ? "---" : $equipamento['serialnumber']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['hd']) ? "---" : $equipamento['hd']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['processador']) ? "---" : $equipamento['processador']; $html .= "</td>";
-                        $html .= "<td>"; empty($equipamento['memoria']) ? "---" : $equipamento['memoria']; $html .= "</td>";
-                        $html .= "<td>"; empty($mso['versao']) ? "---" : $mso['versao']; $html .= "</td>";
-                        $html .= "<td>"; empty($office['versao']) ? "---" : $office['versao']; $html .= "</td>";
+						$office  = $resultoffice->fetch_assoc();
+						
+						$html .= "<tr>";
+							$html .= "<td>"; $html .= empty($equipamento['tipo_equipamento']) ? "---" : $equipamento['tipo_equipamento']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['numero']) ? "---" : $equipamento['numero']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['modelo']) ? "---" : $equipamento['modelo']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['patrimonio']) ? "---" : $equipamento['patrimonio']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['serialnumber']) ? "---" : $equipamento['serialnumber']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['hd']) ? "---" : $equipamento['hd']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['processador']) ? "---" : $equipamento['processador']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($equipamento['memoria']) ? "---" : $equipamento['memoria']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($mso['versao']) ? "---" : $mso['versao']; $html .= "</td>";
+							$html .= "<td>"; $html .= empty($office['versao']) ? "---" : $office['versao']; $html .= "</td>";						
+    					$html .= "</tr>";
                     }
-    $html .= "</tr>
-            </table>
-        </div>
+		$html .= "</table>
+       		</div>
     </div>";
 
-if ($row_equip['observacao'] != 0) {
+if ($equipamento['obs'] != 0) {
 
     $html .= "
 				<div id='tabela_titulo_principal'>
 					<p class='titulo_segundario'><u>Observações:</u></p>
 				</div>
 				<div id='termo_texto'>
-					<p class='text-sm-left texto'>&raquo; " . $row_equip['observacao'] . "</p>
+					<p class='text-sm-left texto'>&raquo; " . $equipamento['obs'] . "</p>
 				</div>";
 }
 
@@ -147,10 +147,6 @@ $html .= "
 	</body>
 </html>";
 
-echo $html;
-
-exit;
-
 require_once '../dompdf/autoload.inc.php';
 require_once '../dompdf/lib/html5lib/Parser.php';
 require_once '../dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
@@ -173,4 +169,4 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream('termo_' . $row_fun['nome'] . '.pdf', array("Attachment" => 0));//1 - Download 0 - Previa
+$dompdf->stream('termo_' . $colaborador['nome'] . '.pdf', array("Attachment" => 1));//1 - Download 0 - Previa

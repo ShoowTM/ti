@@ -72,7 +72,8 @@ MIE.status AS id_status,
 MSE.nome AS status,
 MIE.termo,
 MIE.ip,
-MIE.dominio
+MIE.dominio,
+MIO.obs
 FROM
 manager_inventario_equipamento MIE
 LEFT JOIN
@@ -86,7 +87,9 @@ manager_dropsituacao MDS ON (MIE.situacao = MDS.id_situacao)
 LEFT JOIN
 manager_dropstatusequipamento MSE ON (MIE.status = MSE.id_status)
 LEFT JOIN
-manager_dropequipamentos MDTE ON (MIE.tipo_equipamento = MDTE.id_equip)";
+manager_dropequipamentos MDTE ON (MIE.tipo_equipamento = MDTE.id_equip)
+LEFT JOIN
+manager_inventario_obs MIO ON (MIE.id_equipamento = MIO.id_equipamento)";
 
 //STATUS ATIVO COUNT
 $queryAtivosFuncionario = "SELECT 

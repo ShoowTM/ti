@@ -1,4 +1,7 @@
 <?php
+/* ini_set('display_errors',1);
+ini_set('display_startup_erros',1);
+error_reporting(E_ALL); */
 session_start();
 
 require_once('../bd/conexao.php');
@@ -12,7 +15,7 @@ if ($_GET['id'] != NULL) {
 }
 
 //procurando funcionário
-$queryColaborador .= " WHERE ".$idFuncionario."";
+$queryColaborador .= " WHERE MIF.".$idFuncionario."";
 
 $resultFuncionario = $conn->query($queryColaborador);
 
