@@ -54,7 +54,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
   </h1>
   <hr />
   <!-- /.container-fluid -->
-  <form action="../inc/termo.php" method="POST">
+  <form action="../inc/checklist.php" method="POST">
     <div class="py-4">
       <!-- Page Heading -->
       <h1 class="h6 mb-2 text-gray-800">1-) Este funcionário foi demitido ?</h1>

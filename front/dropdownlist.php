@@ -110,10 +110,6 @@ switch ($_GET['tipo']) {
   </h1>
   <hr />
 
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Listas Suspensas - <?= $nome ?></h1>
-  <p class="mb-4">Caso queira adicionar uma nova <?= $nome ?> <a class="btn btn-success btn-pen-square btn-sm" title="Adicionar" href="#" data-toggle="modal" data-target="#adicionar"><i class="fas fa-plus"></i></a></p>
-
   <div class="col-lg-4 mb-2 my-3" style="display: <?= $_GET['msn'] == 1 ? 'block' : 'none'  ?>;">
     <div class="card bg-danger text-white shadow">
       <div class="card-body">
@@ -140,7 +136,9 @@ switch ($_GET['tipo']) {
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Lista de <?= $nome ?> cadastradas no sistema</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Lista de <?= $nome ?> cadastradas no sistema
+        <a class="btn btn-success btn-pen-square btn-sm float-rigth" title="Adicionar" href="#" data-toggle="modal" data-target="#adicionar"><i class="fas fa-plus"></i></a>
+      </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -183,7 +181,7 @@ switch ($_GET['tipo']) {
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form id="editando" method="POST" action="../inc/editardrop.php?id='.$row['id'].'&tipo='.$_GET['tipo'].'">
+                          <form id="editando" method="POST" action="../inc/editardrop.php?id=' . $row['id'] . '&tipo=' . $_GET['tipo'] . '">
                             <div class="form-group">
                               <label for="nome">Nome</label>
                               <input type="text" class="form-control" id="nome" value="' . $row['nome'] . '" name="nome">

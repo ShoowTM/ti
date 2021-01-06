@@ -48,8 +48,6 @@ $demitido = $resultDemitido->fetch_assoc();
   <hr />
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Colaboradores</h1>
-  <p class="mb-4">Caso queira adicionar um novo colaborador <a class="btn btn-success btn-pen-square btn-sm" title="Adicionar" href="#" data-toggle="modal" data-target="#adicionar"><i class="fas fa-user-plus"></i></a></p>
   <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=4" class="text-decoration">
@@ -106,7 +104,9 @@ $demitido = $resultDemitido->fetch_assoc();
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">lista de colaboradores</h6>
+      <h6 class="m-0 font-weight-bold text-primary">lista de colaboradores
+        <a class="btn btn-success btn-pen-square btn-sm float-rigth" title="Adicionar" href="#" data-toggle="modal" data-target="#adicionar"><i class="fas fa-user-plus"></i></a>
+      </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -120,7 +120,7 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>DEPARTAMENTO</th>
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
-              <th>STATUS</th>
+              <th class="maior">STATUS</th>
               <th class="maior">AÇÃO</th>
             </tr>
           </thead>
@@ -133,8 +133,8 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>DEPARTAMENTO</th>
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
-              <th>STATUS</th>
-              <th  class="maior">AÇÃO</th>
+              <th class="maior"> STATUS</th>
+              <th class="maior">AÇÃO</th>
             </tr>
           </tfoot>
           <tbody>
@@ -170,15 +170,15 @@ $demitido = $resultDemitido->fetch_assoc();
 
               switch ($colaborador['id_status']) {
                 case '4':
-                  echo '<td><span class="icone" style="color: green;">' . $colaborador['status'] . '</span></td>';
+                  echo '<td><span class="icone btn-success">' . $colaborador['status'] . '</span></td>';
                   break;
 
                 case '3':
-                  echo '<td><span class="icone" style="color: #f3b37c7a;">' . $colaborador['status'] . '</span></td>';
+                  echo '<td><span class="icone btn-warning">' . $colaborador['status'] . '</span></td>';
                   break;
 
                 case '8':
-                  echo '<td><span class="icone" style="color: black;">' . $colaborador['status'] . '</span></td>';
+                  echo '<td><span class="icone btn-danger">' . $colaborador['status'] . '</span></td>';
                   break;
 
                 default:
@@ -187,9 +187,11 @@ $demitido = $resultDemitido->fetch_assoc();
               }
 
               echo '<td>                    
-                      <a href="../inc/pesquisaFuncionario.php?id='.$colaborador['id_funcionario'].'" class="btn btn-success btn-sm btn-circle" title="Editar" ><i class="fas fa-pen"></i></a>
-                      <a href="checklist.php?id='.$colaborador['id_funcionario'].'" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: '; echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block"; echo '"><i class="fas fa-list-ul"></i></a>
-                      <a href="termo.php?id='.$colaborador['id_funcionario'].'" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
+                      <a href="../inc/pesquisaFuncionario.php?id=' . $colaborador['id_funcionario'] . '" class="btn btn-success btn-sm btn-circle" title="Editar" ><i class="fas fa-pen"></i></a>
+                      <a href="checklist.php?id=' . $colaborador['id_funcionario'] . '" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: ';
+              echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block";
+              echo '"><i class="fas fa-list-ul"></i></a>
+                      <a href="termo.php?id=' . $colaborador['id_funcionario'] . '" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
                     </td>';
             }
             ?>

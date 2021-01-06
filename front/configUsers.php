@@ -6,7 +6,7 @@ require_once('../inc/pesquisas.php');
 require_once('../bd/conexao.php');
 
 //permissão de tela
-if($_SESSION['perfil'] != '0'){
+if ($_SESSION['perfil'] != '0') {
   exit;
 }
 
@@ -14,20 +14,19 @@ if($_SESSION['perfil'] != '0'){
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="menu mb-6 text-gray-800">
+  <h1 class="menu text-gray-800">
     <a href="../front/front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <a href="../front/config.php?pagina=2"><i class="fas fa-cogs"></i> Configuração </a> /
     <i class="fas fa-users"></i> Lista Usuários </a>
   </h1>
   <hr />
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Lista Usuário</h1>
-  <p class="mb-4">Caso queira adicionar um novo usuário. <a class="btn btn-success btn-pen-square btn-sm" title="Adicionar" href="novoUsuario.php?pagina=2"><i class="fas fa-plus"></i></a></p>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-users"></i> Usuários</h6>
+      <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-users"></i> Usuários
+        <a class="btn btn-success btn-pen-square btn-sm float-right" title="Adicionar" href="novoUsuario.php?pagina=2"><i class="fas fa-plus"></i></a>
+      </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -66,15 +65,15 @@ if($_SESSION['perfil'] != '0'){
               if ($usuarios['profile_deleted'] == 1) {
 
                 echo '
-                        <a href="../inc/ativarDesativar.php?id_usuario='.$usuarios['id_profile'].'&cod=0" class="btn btn-success btn-circle btn-sm" title="Ativar">
+                        <a href="../inc/ativarDesativar.php?id_usuario=' . $usuarios['id_profile'] . '&cod=0" class="btn btn-success btn-circle btn-sm" title="Ativar">
                           <i class="fas fa-check"></i>
                         </a>';
               } else {
                 echo '
-                      <a href="../inc/ativarDesativar.php?id_usuario='.$usuarios['id_profile'].'&cod=1" class="btn btn-danger btn-circle btn-sm" title="Desativar">
+                      <a href="../inc/ativarDesativar.php?id_usuario=' . $usuarios['id_profile'] . '&cod=1" class="btn btn-danger btn-circle btn-sm" title="Desativar">
                         <i class="fas fa-times-circle"></i>
                       </a>
-                      <a href="perfilUsuarios.php?pagina=2&id_usuario='.$usuarios['id_profile'].'" class="btn btn-info btn-circle btn-sm" title="Editar">
+                      <a href="perfilUsuarios.php?pagina=2&id_usuario=' . $usuarios['id_profile'] . '" class="btn btn-info btn-circle btn-sm" title="Editar">
                         <i class="fas fa-pencil-alt"></i>
                       </a>';
               }
