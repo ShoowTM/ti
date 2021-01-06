@@ -38,8 +38,18 @@ require_once('../inc/permissoes.php');
     </div>
 
     <div>
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sm text-white-50"></i> Buscar</a>
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sm text-white-50 fas fa-plus"></i> Adicionar Conteudo</a>
+    <a href="#" class="btn btn-primary btn-icon-split menu rigth">
+        <span class="icon text-white-50">
+          <i class="fas fa-search"></i>
+        </span>
+        <span class="text">Pesquisar</span>
+      </a>
+      <a href="#" class="btn btn-primary btn-icon-split menu">
+        <span class="icon text-white-50">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">Adicionar Conteúdo</span>
+      </a>
     </div>
 
 

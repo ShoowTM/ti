@@ -41,6 +41,10 @@ ul {
     padding-top: 20px;
 }
 
+.rigth{
+    margin-right: 20px;
+}
+
 .left {
     margin-left: 25%;
 }
@@ -110,7 +114,4 @@ ul {
 
 .textCenterTable{
     margin-left: 34%;
-}
-
-.arroz{
 }
