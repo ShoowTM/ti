@@ -1,6 +1,4 @@
 <?php
-require_once('../bd/conexao.php');
-
 //perfil
 $queryPerfil = "SELECT * FROM manager_profile_type";
 

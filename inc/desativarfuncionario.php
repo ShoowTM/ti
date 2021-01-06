@@ -23,3 +23,7 @@ if (!$result = $conn->query($updateAtivar)) {
         header('location: ../front/colaboradores.php?pagina=3.php');
     }
 }
+
+$conn->close();
+
+?>

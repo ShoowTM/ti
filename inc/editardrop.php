@@ -83,5 +83,4 @@ switch ($_GET['tipo']) {
   header('location: ../front/dropdownlist.php?pagina=2&tipo='.$_GET['tipo'].'&msn=3');
 
   $conn->close();
-
 ?>

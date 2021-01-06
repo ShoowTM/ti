@@ -75,3 +75,5 @@ if ($funcionario['id_funcionario'] != NULL) {
 }
 
 $conn->close();
+
+?>

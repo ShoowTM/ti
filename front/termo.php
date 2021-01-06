@@ -58,7 +58,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
   <h1 class="h3 mb-2 text-gray-800">Emitir termo de todos os equipamentos ?</h1>
   <div class="py-4">
     <a href="javascript:" class="btn btn-danger" onclick="equipamentos()">Não</a>
-    <a href="javascript:" class="btn btn-success">SIM</a>
+    <a href="../inc/termo.php?id=<?= $_GET['id'] ?>" class="btn btn-success">SIM</a>
   </div>
 </div>
 <!-- End of Main Content -->
@@ -70,7 +70,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <form action="../inc/termo.php" method="POST">
+      <form action="../inc/termo.php?id=<?= $_GET['id'] ?>" method="POST">
         <table class="table table-bordered small" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>

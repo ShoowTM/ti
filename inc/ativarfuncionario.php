@@ -23,3 +23,7 @@ if (!$result = $conn->query($updateAtivar)) {
         header('location: pesquisaFuncionario.php?id=' . $_GET['id'] . '');
     }
 }
+
+$conn->close();
+
+?>

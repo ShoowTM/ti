@@ -42,3 +42,5 @@ if(!$insert = $conn->query($insertFuncionario)){
 
 
 $conn->close();
+
+?>
