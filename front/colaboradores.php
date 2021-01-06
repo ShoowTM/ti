@@ -49,14 +49,14 @@ $demitido = $resultDemitido->fetch_assoc();
 
   <!-- Page Heading -->
   <div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=4" class="text-decoration">
         <div class="card border-left-success shadow h-100 py-2" style="background-color: <?= $_GET['status'] == 4 ? "#1cc88a3b" : "white" ?>">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Ativo</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ativo['status'] ?> Funcionários</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ativo['status'] ?> Colaboradores</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -66,14 +66,14 @@ $demitido = $resultDemitido->fetch_assoc();
         </div>
       </a>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=3" class="text-decoration">
         <div class="card border-left-warning shadow h-100 py-2" style="background-color: <?= $_GET['status'] == 3 ? "#f6c23e52" : "white" ?>">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Falta Termo</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $termo['status'] ?> Funcionários</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $termo['status'] ?> Colaboradores</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -83,14 +83,14 @@ $demitido = $resultDemitido->fetch_assoc();
         </div>
       </a>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=8" class="text-decoration">
         <div class="card border-left-danger shadow h-100 py-2" style="background-color: <?= $_GET['status'] == 8 ? "#e74a3b5c" : "white" ?>">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Demitidos</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $demitido['status'] ?> Funcionários</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $demitido['status'] ?> Colaboradores</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
