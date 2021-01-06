@@ -1,12 +1,31 @@
 <?php
 session_start();
 
+require_once('../bd/conexao.php');
+
+$dataHoje= date('d/m/Y H:i:s');
+
+
+//FUNCIONARIO
 if(empty($_GET['id'])){
     $id_fun = $_SESSION['id_funcionario'];
 }else{
     $id_fun = $_GET['id'];
 }
 
+
+//SALVANDO OBSERVAÇÃO
+if($_POST['msn'] != NULL){
+    $insertOBS = "INSERT INTO manager_inventario_obs (id_funcionario, usuario, obs, data_criacao) 
+    VALUES ('".$id_fun."', '".$_SESSION['id']."', '".$_POST['msn']."', '".$dataHoje."')";
+
+    if(!$resultOBS = $conn->query($insertOBS)){
+        printf("Error[1]: %s\n", $conn->error);
+        exit;
+    }
+}
+
+//GERANDO O TERMO
 
 if ($_POST['equip'] == NULL) {
      //sim é todos os equipamentos

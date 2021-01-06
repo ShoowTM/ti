@@ -39,8 +39,11 @@ $resultEquipamento = $conn->query($queryEquipamento);
       <a href="colaboradores.php?pagina=3"><i class="fas fa-users"></i> Colaboradores</a> /
       <?php
       if ($_GET['id'] == NULL) {
-        echo '<a href="funcionario.php?pagina=3"><i class="fas fa-user"></i> ' . $nomeFuncionario . '</a> /
-          <a href="funcionarioequip.php?pagina=3"><i class="fas fa-laptop"></i> Equipamentos</a> /';
+
+        echo '
+          <a href="funcionario.php?pagina=3"><i class="fas fa-user"></i> ' . $nomeFuncionario . '</a> /
+          <a href="funcionarioequip.php?pagina=3"><i class="fas fa-laptop"></i> Equipamentos</a> /
+          ';
       } else {
         echo '<i class="fas fa-user"></i>' . $nomeFuncionario['nome'] . ' /';
       }
@@ -51,82 +54,99 @@ $resultEquipamento = $conn->query($queryEquipamento);
   </h1>
   <hr />
   <!-- /.container-fluid -->
-</div>
-
-<div class="text-center py-4">
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Emitir termo de todos os equipamentos ?</h1>
-  <div class="py-4">
-    <a href="javascript:" class="btn btn-danger" onclick="equipamentos()">Não</a>
-    <a href="../inc/termo.php?id=<?= $_GET['id'] ?>" class="btn btn-success">SIM</a>
-  </div>
-</div>
-<!-- End of Main Content -->
-
-<!-- DataTales Example -->
-<div class="card shadow mb-4" id="tabelaEquip" style="display: none;">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Então escolha qual!</h6>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <form action="../inc/termo.php?id=<?= $_GET['id'] ?>" method="POST">
-        <table class="table table-bordered small" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Check</th>
-              <th>Equipamento</th>
-              <th>Modelo</th>
-              <th>Patrimonio</th>
-              <th>Número</th>
-              <th>IMEI</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>Check</th>
-              <th>Equipamento</th>
-              <th>Modelo</th>
-              <th>Patrimonio</th>
-              <th>Número</th>
-              <th>IMEI</th>
-            </tr>
-          </tfoot>
-          <tbody class="colorTable">
-            <?php
-            while ($equip = $resultEquipamento->fetch_assoc()) {
-              echo '
-                <tr>
-                  <td><input type="checkbox" value="' . $equip['id_equipamento'] . '" name="equip[]"></td>
-                  <td>';
-              echo empty($equip['tipo_equipamento']) ? "---" : $equip['tipo_equipamento'];
-              echo '</td>
-                  <td>';
-              echo empty($equip['modelo']) ? "---" : $equip['modelo'];
-              echo '</td>
-                  <td>';
-              echo empty($equip['patimonio']) ? "---" : $equip['patrimonio'];
-              echo '</td>
-                  <td>';
-              echo empty($equip['numero']) ? "---" : $equip['numero'];
-              echo '</td>
-                  <td>';
-              echo empty($equip['imei_chip']) ? "---" : $equip['imei_chip'];
-              echo '</td>
-                </tr>
-                ';
-            }
-
-            ?>
-          </tbody>
-        </table>
-        <hr>
-        <button type="submit" class="btn btn-success col-xl-4 mb-4 py-05 textCenterTable">
-          <span class="text">Emitir Termo</span>
-        </button>
-      </form>
+  <form action="../inc/termo.php?id=<?= $_GET['id'] ?>" method="POST">
+    <div class="py-4">
+      <!-- Page Heading -->
+      <h1 class="h6 mb-2 text-gray-800">1-) Emitir termo de todos os equipamentos ?</h1>
+      <div class="form-group py-2">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="todosEquipamentos" id="exampleRadios1" value="1" onclick="sim()" checked>
+          <label class="form-check-label" for="exampleRadios1">
+            Sim
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="todosEquipamentos" id="exampleRadios2" value="2" onclick="nao()">
+          <label class="form-check-label" for="exampleRadios2">
+            Não
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <div class="py-4">
+      <!-- Page Heading -->
+      <h1 class="h6 mb-2 text-gray-800">2-) Caso queira deixar alguma observação no termo !</h1>
+        <div class="form-group py-4">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Obs..." name="msn"></textarea>
+        </div>
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4" id="tabelaEquip" style="display: none;">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Qual Equipamento ?</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered small" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Check</th>
+                <th>Equipamento</th>
+                <th>Modelo</th>
+                <th>Patrimonio</th>
+                <th>Número</th>
+                <th>IMEI</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Check</th>
+                <th>Equipamento</th>
+                <th>Modelo</th>
+                <th>Patrimonio</th>
+                <th>Número</th>
+                <th>IMEI</th>
+              </tr>
+            </tfoot>
+            <tbody class="colorTable">
+              <?php
+              while ($equip = $resultEquipamento->fetch_assoc()) {
+                echo '
+                  <tr>
+                    <td><input type="checkbox" value="' . $equip['id_equipamento'] . '" name="equip[]"></td>
+                    <td>';
+                echo empty($equip['tipo_equipamento']) ? "---" : $equip['tipo_equipamento'];
+                echo '</td>
+                    <td>';
+                echo empty($equip['modelo']) ? "---" : $equip['modelo'];
+                echo '</td>
+                    <td>';
+                echo empty($equip['patimonio']) ? "---" : $equip['patrimonio'];
+                echo '</td>
+                    <td>';
+                echo empty($equip['numero']) ? "---" : $equip['numero'];
+                echo '</td>
+                    <td>';
+                echo empty($equip['imei_chip']) ? "---" : $equip['imei_chip'];
+                echo '</td>
+                  </tr>
+                  ';
+              }
+
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-success col-xl-4 mb-4 py-05 textCenterTable">
+      <span class="text">Emitir Check-List</span>
+    </button>
+  </form>
 </div>
 
 <!-- Footer -->
@@ -154,8 +174,13 @@ $resultEquipamento = $conn->query($queryEquipamento);
 
 <!--MOSTRAR TABELA DOS EQUIPAMENTOS-->
 <script>
-function equipamentos(){
-  document.getElementById("tabelaEquip").style.display = "block";
-}
+  function nao() {
+    document.getElementById("tabelaEquip").style.display = "block";
+  }
+
+  function sim() {
+    document.getElementById("tabelaEquip").style.display = "none";
+  }
 </script>
+
 </html>

@@ -40,9 +40,7 @@ manager_dropdepartamento MDD ON (MIF.departamento = MDD.id_depart)
 LEFT JOIN
 manager_dropempresa MDE ON (MIF.empresa = MDE.id_empresa)
 LEFT JOIN
-manager_dropstatus MDS ON (MIF.status = MDS.id_status)
-LEFT JOIN
-manager_inventario_equipamento MIE ON (MIF.id_funcionario = MIE.id_funcionario)";
+manager_dropstatus MDS ON (MIF.status = MDS.id_status)";
 
 //EQUIPAMENTOS
 $queryEquipamento = "SELECT 
@@ -72,8 +70,7 @@ MIE.status AS id_status,
 MSE.nome AS status,
 MIE.termo,
 MIE.ip,
-MIE.dominio,
-MIO.obs
+MIE.dominio
 FROM
 manager_inventario_equipamento MIE
 LEFT JOIN
@@ -87,9 +84,7 @@ manager_dropsituacao MDS ON (MIE.situacao = MDS.id_situacao)
 LEFT JOIN
 manager_dropstatusequipamento MSE ON (MIE.status = MSE.id_status)
 LEFT JOIN
-manager_dropequipamentos MDTE ON (MIE.tipo_equipamento = MDTE.id_equip)
-LEFT JOIN
-manager_inventario_obs MIO ON (MIE.id_equipamento = MIO.id_equipamento)";
+manager_dropequipamentos MDTE ON (MIE.tipo_equipamento = MDTE.id_equip)";
 
 //STATUS ATIVO COUNT
 $queryAtivosFuncionario = "SELECT 
@@ -160,3 +155,31 @@ FROM
 manager_office MO
 LEFT JOIN
 manager_dropoffice MDO ON (MO.versao = MDO.id)";
+
+//colaborador para PDF
+//COLABORADORES
+$queryColaboradorPDF = "SELECT 
+MIF.id_funcionario, 
+MIF.nome, 
+MIF.cpf,
+MDF.nome AS funcao, 
+MDD.nome AS departamento, 
+MDE.nome AS empresa, 
+MDS.nome AS status,
+MIF.status AS id_status,
+MIF.funcao AS id_funcao,
+MIF.departamento AS id_departamento,
+MIF.empresa AS id_empresa,
+MIF.deletar
+FROM
+manager_inventario_funcionario MIF
+LEFT JOIN
+manager_dropfuncao MDF ON (MIF.funcao = MDF.id_funcao)
+LEFT JOIN
+manager_dropdepartamento MDD ON (MIF.departamento = MDD.id_depart)
+LEFT JOIN
+manager_dropempresa MDE ON (MIF.empresa = MDE.id_empresa)
+LEFT JOIN
+manager_dropstatus MDS ON (MIF.status = MDS.id_status)
+LEFT JOIN
+manager_inventario_equipamento MIE ON (MIF.id_funcionario = MIE.id_funcionario)";

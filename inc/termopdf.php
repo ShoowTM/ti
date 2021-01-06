@@ -1,4 +1,32 @@
 <?php
+/* ini_set('display_errors',1);
+ini_set('display_startup_erros',1);
+error_reporting(E_ALL); */
+
+require_once('../bd/conexao.php');
+require_once('pesquisas.php');
+
+//EQUIPAMENTO
+if ($_GET['id_fun'] == NULL) {
+    $queryEquipamento .= $_GET['query'];
+    $funcionario = $_GET['query'];
+} else {
+    $queryEquipamento .= " WHERE MIE.id_funcionario = " . $_GET['id_fun'] . "";
+    $funcionario = " WHERE MIF.id_funcionario = " . $_GET['id_fun'] . "";
+}
+
+$resultEquip = $conn->query($queryEquipamento);
+
+
+//FUNCIONARIO
+$queryColaboradorPDF .= $funcionario." LIMIT 1";
+$resultColaborador = $conn->query($queryColaboradorPDF);
+$colaborador = $resultColaborador->fetch_assoc();
+
+//OBSERVAÇÕES
+$queryOBS = "SELECT * FROM manager.manager_inventario_obs WHERE id_funcionario = ".$colaborador['id_funcionario']." ORDER BY id_obs DESC LIMIT 1";
+$resultOBS = $conn->query($queryOBS);
+$obs = $resultOBS->fetch_assoc();
 
 /*CORPO DO PDF*/
 $html = "
@@ -40,7 +68,7 @@ $html = "
 			</div>
 			<div id='text_departamento'>
 				<span id='empresa_departamento'>
-					<p class='texto'>Na condição de empregado(a) da filial <span class='titulo_segundario'>" . $row_fun['empresa'] . " - " . $row_fun['departamento'] . " / " . $row_fun['funcao'] . "</span>, estou recebendo neste ato equipamento conforme abaixo:
+					<p class='texto'>Na condição de empregado(a) da filial <span class='titulo_segundario'>" . $colaborador['empresa'] . " - " . $colaborador['departamento'] . " / " . $colaborador['funcao'] . "</span>, estou recebendo neste ato equipamento conforme abaixo:
 				</span>
 			</div>
 			<div id='tabela_equipamento'>
@@ -51,30 +79,46 @@ $html = "
 				<!--SE FOR CHIP, MOSTRAR APENAS CHIP E OPERADORA-->
 					<table class='table table-sm'>
 					  <tr>
-					  	<th>EQUIP.</th>
+						<th>EQUIP.</th>						
+						<th>NÚMERO</th>
 						<th>MODELO</th>
 						<th>PATRIMÔNIO</th>
 					    <th>IMEI</th> 
 					    <th>VALOR</th>
-					    <th>NÚMERO</th>
 					    <th>PLANOS</th>
 					    <th>ACESSÓRIOS</th>
 						<th>SITUAÇÃO</th>
 						<th>ESTADO</th>		    
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-					</table>
+                      </tr>";
+					  while ($equipamento = $resultEquip->fetch_assoc()) {
+
+							//acessorios
+							$queryAcessorios = "SELECT MDA.nome FROM manager.manager_inventario_acessorios MIA LEFT JOIN manager_dropacessorios MDA ON (MIA.tipo_acessorio = MDA.id_acessorio) WHERE MIA.id_equipamento = ".$equipamento['id_equipamento']."";
+							$resultAcessorios = $conn->query($queryAcessorios);
+						 
+							
+						  $html .= "<tr>";
+							  $html .= "<td>"; $html .= empty($equipamento['tipo_equipamento']) ? "---" : $equipamento['tipo_equipamento']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['numero']) ? "---" : $equipamento['numero']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['modelo']) ? "---" : $equipamento['modelo']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['patrimonio']) ? "---" : $equipamento['patrimonio']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['imei_chip']) ? "---" : $equipamento['imei_chip']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['valor']) ? "---" : $equipamento['valor']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['planos_voz']) || empty($equipamento['planos_dados']) ? "---" : $equipamento['planos_dados'].",". $equipamento['planos_voz']; $html .= "</td>";
+							  
+							  $html .= "<td>"; 
+							  
+							  while($acessorios = $resultAcessorios->fetch_assoc() ){
+								$html .= $acessorios['nome']."-";
+							  }
+							  
+							  $html .= "</td>";
+							  
+							  $html .= "<td>"; $html .= empty($equipamento['situacao']) ? "---" : $equipamento['situacao']; $html .= "</td>";
+							  $html .= "<td>"; $html .= empty($equipamento['estado']) ? "---" : $equipamento['estado']; $html .= "</td>";						
+						  $html .= "</tr>";
+					  }
+		  $html .= "</table>
 				</div>
 			</div>
 			<div id='termo_texto'>
@@ -88,31 +132,26 @@ $html = "
 				<p class='titulo_segundario'><u>Observações:</u></p>
 			</div>
 			<div id='termo_texto'>";
-if ($row_fun['obs'] != NULL) {
+			if ($obs['obs'] != NULL) {
 
-    $html .= "<p class='text-sm-left texto'>&raquo; " . $row_fun['obs'] . "</p>";
-} else {
-    $html .= "<br /><br />";
-}
-
-$html .=   "</div>
+				$html .= "<div id='termo_texto'>
+								<p class='text-sm-left texto'>&raquo; " . $obs['obs'] . "</p>
+							</div>";
+			}
+			
+			$html .= "</div>
 			<br>
 			<div id='termo_data'>
 				<p class='text-center'>____________, ____ de _____________ de ________</p>
 			</div>
 			<div id='termo_footer'>
-				<p class='font-weight-light'>Colaborador(A): " . $row_fun['nome'] . "</p>
-				<p class='font-weight-light'>CPF: " . $row_fun['cpf'] . "</p>
+				<p class='font-weight-light'>Colaborador(A): " . $colaborador['nome'] . "</p>
+				<p class='font-weight-light'>CPF: " . $colaborador['cpf'] . "</p>
 				<p class='font-weight-light'>Assinatura:_______________________________________________________________ </p>
 			</div>
 		</div>
 	</body>
 </html>";
-
-
-echo $html;
-
-exit;
 
 require_once '../dompdf/autoload.inc.php';
 require_once '../dompdf/lib/html5lib/Parser.php';
@@ -137,13 +176,9 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-if ($_GET['pagina'] == 1) {
-    $dompdf->stream('termo_' . $row_fun['nome'] . '.pdf', array("Attachment" => 0)); //1 - Download 0 - Previa
-} else {
-    $dompdf->stream('termo_' . $row_fun['nome'] . '.pdf', array("Attachment" => 1)); //1 - Download 0 - Previa
-}
+
+$dompdf->stream('termo_' . $colaborador['nome'] . '.pdf', array("Attachment" => 1));//1 - Download 0 - Previa
+
 
 $conn->close();
-?>
-
 ?>
