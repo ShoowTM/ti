@@ -68,5 +68,3 @@ if ($_POST['equip'] == NULL) {
      }
    
 }
-
-
