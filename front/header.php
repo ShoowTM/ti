@@ -92,7 +92,7 @@ require_once('../inc/permissoes.php');
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+                    <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item" style="display: <?= $relatorio ?>;">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-clipboard"></i>
@@ -108,8 +108,8 @@ require_once('../inc/permissoes.php');
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item" style="display: <?= $google ?>;">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item <?= $_GET['pagina'] == 4 ? 'active' : '' ?>" style="display: <?= $google ?>;">
+                <a class="nav-link" href="pdados.php?pagina=4">
                     <i class="fab fa-fw fa-google"></i>
                     <span>Google</span>
                 </a>

@@ -82,21 +82,26 @@ ul {
     margin: auto;
     width: 80%;
     position: relative;
+    text-align: center
 }
 
 .centro img {
-    width: 100%
+    width: 50%
+    
 }
 
 .dentro {
-    position: absolute;
     padding: 10px;
     top: 70%;
     left: 20%;
 }
+.centro hr {
+    border-top: 0px solid rgba(0,0,0);
+   
+}
 
-.top{
-    margin-top: 80px;
+.borderradius {
+    border-radius: 10px !important ;
 }
 
 .menu{
@@ -105,4 +110,7 @@ ul {
 
 .textCenterTable{
     margin-left: 34%;
+}
+
+.arroz{
 }
