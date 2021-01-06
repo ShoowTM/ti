@@ -16,7 +16,7 @@ $usuario = $resultUsuario->fetch_assoc()
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h6 mb-6 text-gray-800">
+  <h1 class="menu mb-6 text-gray-800">
     <a href="../front/front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <a href="../front/config.php?pagina=2"><i class="fas fa-cogs"></i> Configuração </a> /
     <a href="../front/configUsers.php?pagina=2"><i class="fas fa-users"></i> Lista Usuários </a> /

@@ -40,7 +40,7 @@ $demitido = $resultDemitido->fetch_assoc();
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h6 mb-6 text-gray-800">
+  <h1 class="menu mb-6 text-gray-800">
     <a href="front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <i class="fas fa-users"></i> Colaboradores
     <span class="float-rigth"><a href="colaboradores.php?pagina=3" id="atualiz"><i class="fas fa-sync-alt"></i> Atualizar</a></span>
@@ -48,17 +48,15 @@ $demitido = $resultDemitido->fetch_assoc();
   <hr />
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Colaboradores</h1>
-  <p class="mb-4">Caso queira adicionar um novo colaborador <a class="btn btn-success btn-pen-square btn-sm" title="Adicionar" href="#" data-toggle="modal" data-target="#adicionar"><i class="fas fa-user-plus"></i></a></p>
   <div class="row">
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=4" class="text-decoration">
         <div class="card border-left-success shadow h-100 py-2" style="background-color: <?= $_GET['status'] == 4 ? "#1cc88a3b" : "white" ?>">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Ativo</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ativo['status'] ?> Funcionários</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $ativo['status'] ?> - Colaboradores</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -68,14 +66,14 @@ $demitido = $resultDemitido->fetch_assoc();
         </div>
       </a>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=3" class="text-decoration">
         <div class="card border-left-warning shadow h-100 py-2" style="background-color: <?= $_GET['status'] == 3 ? "#f6c23e52" : "white" ?>">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Falta Termo</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $termo['status'] ?> Funcionários</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $termo['status'] ?> - Colaboradores</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -85,14 +83,14 @@ $demitido = $resultDemitido->fetch_assoc();
         </div>
       </a>
     </div>
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-6 mb-4">
       <a href="colaboradores.php?pagina=3&status=8" class="text-decoration">
         <div class="card border-left-danger shadow h-100 py-2" style="background-color: <?= $_GET['status'] == 8 ? "#e74a3b5c" : "white" ?>">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Demitidos</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $demitido['status'] ?> Funcionários</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $demitido['status'] ?> - Colaboradores</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -106,7 +104,9 @@ $demitido = $resultDemitido->fetch_assoc();
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">lista de colaboradores</h6>
+      <h6 class="m-0 font-weight-bold text-primary">lista de colaboradores
+        <a class="btn btn-success btn-pen-square btn-sm float-rigth" title="Adicionar" href="#" data-toggle="modal" data-target="#adicionar"><i class="fas fa-user-plus"></i></a>
+      </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -120,7 +120,7 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>DEPARTAMENTO</th>
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
-              <th>STATUS</th>
+              <th class="maior">STATUS</th>
               <th class="maior">AÇÃO</th>
             </tr>
           </thead>
@@ -133,8 +133,8 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>DEPARTAMENTO</th>
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
-              <th>STATUS</th>
-              <th  class="maior">AÇÃO</th>
+              <th class="maior"> STATUS</th>
+              <th class="maior">AÇÃO</th>
             </tr>
           </tfoot>
           <tbody>
@@ -170,15 +170,15 @@ $demitido = $resultDemitido->fetch_assoc();
 
               switch ($colaborador['id_status']) {
                 case '4':
-                  echo '<td><span class="icone" style="color: green;">' . $colaborador['status'] . '</span></td>';
+                  echo '<td><span class="icone btn-success">' . $colaborador['status'] . '</span></td>';
                   break;
 
                 case '3':
-                  echo '<td><span class="icone" style="color: #f3b37c7a;">' . $colaborador['status'] . '</span></td>';
+                  echo '<td><span class="icone btn-warning">' . $colaborador['status'] . '</span></td>';
                   break;
 
                 case '8':
-                  echo '<td><span class="icone" style="color: black;">' . $colaborador['status'] . '</span></td>';
+                  echo '<td><span class="icone btn-danger">' . $colaborador['status'] . '</span></td>';
                   break;
 
                 default:
@@ -187,9 +187,11 @@ $demitido = $resultDemitido->fetch_assoc();
               }
 
               echo '<td>                    
-                      <a href="../inc/pesquisaFuncionario.php?id='.$colaborador['id_funcionario'].'" class="btn btn-success btn-sm btn-circle" title="Editar" ><i class="fas fa-pen"></i></a>
-                      <a href="#" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: '; echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block"; echo '"><i class="fas fa-list-ul"></i></a>
-                      <a href="#" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
+                      <a href="../inc/pesquisaFuncionario.php?id=' . $colaborador['id_funcionario'] . '" class="btn btn-success btn-sm btn-circle" title="Editar" ><i class="fas fa-pen"></i></a>
+                      <a href="checklist.php?id=' . $colaborador['id_funcionario'] . '" class="btn btn-warning btn-sm btn-circle" title="Check-List"  style="display: ';
+              echo empty($_SESSION['emitir_check_list']) ? "none" : "inline-block";
+              echo '"><i class="fas fa-list-ul"></i></a>
+                      <a href="termo.php?id=' . $colaborador['id_funcionario'] . '" class="btn btn-info btn-sm btn-circle" title="Termo"><i class="fas fa-file"></i></a>
                     </td>';
             }
             ?>

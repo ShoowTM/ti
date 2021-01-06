@@ -16,9 +16,9 @@ if (!empty($_SESSION['id_funcionario'])) {
 
 ?>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid py-4">
   <!-- Page Heading -->
-  <h1 class="h6 mb-6 text-gray-800">
+  <h1 class="menu mb-6 text-gray-800">
     <a href="../front/front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <a href="../front/colaboradores.php?pagina=3"><i class="fas fa-users"></i> Colaboradores</a> /
     <?= empty($_SESSION['nomeFuncionario']) ? "<i class='fas fa-user-plus'></i> Novo Funcionário" : "<i class='fas fa-user'></i> " . $_SESSION['nomeFuncionario'] ?>

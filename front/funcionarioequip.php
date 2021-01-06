@@ -1,7 +1,4 @@
 <?php
-/* ini_set('display_errors', 1);
-error_reporting(E_ALL); */
-
 session_start();
 
 require_once('header.php');
@@ -17,7 +14,7 @@ $result = $conn->query($queryEquipamento);
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h6 mb-6 text-gray-800">
+  <h1 class="menu mb-6 text-gray-800">
     <a href="front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <a href="colaboradores.php?pagina=3"><i class="fas fa-users"></i> Colaboradores</a> /
     <a href="funcionario.php?pagina=3"><i class="fas fa-user"></i> <?= $_SESSION['nomeFuncionario'] ?></a> /
@@ -26,13 +23,13 @@ $result = $conn->query($queryEquipamento);
   <hr />
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Equipamentos</h1>
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">
         Lista dos equipamentos
         <a href="checklist.php?pagina=3" class="float-right btn btn-warning" style="display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Check-list"><i class="fas fa-list"></i></a>
-        <a href="termo.php?pagina=3" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>         
+        <a href="termo.php?pagina=3" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>
+        <a href="#" class="float-right btn btn-success" style="margin-right: 10px;" title="Adicionar Novo Equipamento"><i class="fas fa-plus"></i></a>            
       </h6>
     </div>
     <div class="card-body">

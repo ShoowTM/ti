@@ -12,16 +12,14 @@ $resultLog = $conn->query($queryLog);
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h6 mb-6 text-gray-800">
+  <h1 class="menu mb-6 text-gray-800">
     <a href="front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <a href="colaboradores.php?pagina=3"><i class="fas fa-users"></i> Colaboradores</a> /
     <a href="funcionario.php?pagina=3"><i class="fas fa-user"></i> <?= $_SESSION['nomeFuncionario'] ?></a> /
     <i class="fas fa-list"></i> Histórico
   </h1>
   <hr />
-
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Histórico</h1>
+  
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Lista do que aconteceu com esse funcionário</h6>
