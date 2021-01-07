@@ -29,19 +29,18 @@ $result = $conn->query($queryEquipamento);
         Lista dos equipamentos
         <a href="checklist.php?pagina=3" class="float-right btn btn-warning" style="display: <?= empty($_SESSION["emitir_check_list"]) ? "none" : "inline-block" ?>;" title="Check-list"><i class="fas fa-list"></i></a>
         <a href="termo.php?pagina=3" class="float-right btn btn-info" style="margin-right: 10px;" title="Termo"><i class="fas fa-file"></i></a>
-        <a href="#" class="float-right btn btn-success" style="margin-right: 10px;" title="Adicionar Novo Equipamento"><i class="fas fa-plus"></i></a>            
+        <a href="#" class="float-right btn btn-success" style="margin-right: 10px;" title="Adicionar Novo Equipamento"><i class="fas fa-plus"></i></a>
       </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered small-lither" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered small-lither" id="dataTable" cellspacing="0">
 
           <?php
 
           if ($_SESSION['perfil'] == 1) { //USUÁRIO
             echo '<thead>
                         <tr>
-                          <th>ID</th>
                           <th>EQUIPAMENTO</th>
                           <th>MODELO</th>
                           <th>PATRIMÔNIO</th>
@@ -49,18 +48,15 @@ $result = $conn->query($queryEquipamento);
                           <th>OPERADORA</th>
                           <th>NUMERO</th>
                           <th>IMEI</th>
-                          <th>PLANO</th>
                           <th>VALOR</th>
                           <th>ESTADO</th>
                           <th>SITUAÇÃO</th>
-                          <th>STATUS</th>
                           <th>TERMO</th>
-                          <th>AÇÃO</th>
+                          <th class="maior">AÇÃO</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
-                          <th>ID</th>
                           <th>EQUIPAMENTO</th>
                           <th>MODELO</th>
                           <th>PATRIMÔNIO</th>
@@ -68,34 +64,29 @@ $result = $conn->query($queryEquipamento);
                           <th>OPERADORA</th>
                           <th>NUMERO</th>
                           <th>IMEI</th>
-                          <th>PLANO</th>
                           <th>VALOR</th>
                           <th>ESTADO</th>
                           <th>SITUAÇÃO</th>
-                          <th>STATUS</th>
                           <th>TERMO</th>
-                          <th>AÇÃO</th>
+                          <th class="maior">AÇÃO</th>
                         </tr>
                       </tfoot>';
           } elseif ($_SESSION['perfil'] == 2) { //tecnicos
             echo '<thead>
                 <tr>
-                  <th>ID</th>
                   <th>EQUIPAMENTO</th>
                   <th>PATRIMÔNIO</th>
                   <th>FILIAL</th>
                   <th>NUMERO</th>
-                  <th>STATUS</th>
                   <th>IP</th>
                   <th>S.O</th>
                   <th>OFFICE</th>
                   <th>AD</th>
-                  <th>AÇÃO</th>
+                  <th class="maior">AÇÃO</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>ID</th>
                   <th>EQUIPAMENTO</th>
                   <th>PATRIMÔNIO</th>
                   <th>FILIAL</th>
@@ -105,13 +96,12 @@ $result = $conn->query($queryEquipamento);
                   <th>S.O</th>
                   <th>OFFICE</th>
                   <th>AD</th>
-                  <th>AÇÃO</th>
+                  <th class="maior">AÇÃO</th>
                 </tr>
               </tfoot>';
           } else { //demais perfis
             echo '<thead>
                     <tr>
-                      <th>ID</th>
                       <th>EQUIPAMENTO</th>
                       <th>MODELO</th>
                       <th>PATRIMÔNIO</th>
@@ -119,22 +109,19 @@ $result = $conn->query($queryEquipamento);
                       <th>OPERADORA</th>
                       <th>NUMERO</th>
                       <th>IMEI</th>
-                      <th>PLANO</th>
                       <th>VALOR</th>
                       <th>ESTADO</th>
                       <th>SITUAÇÃO</th>
-                      <th>STATUS</th>
                       <th>TERMO</th>
                       <th>IP</th>
                       <th>S.O</th>
                       <th>OFFICE</th>
                       <th>AD</th>
-                      <th>AÇÃO</th>
+                      <th class="maior">AÇÃO</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>ID</th>
                       <th>EQUIPAMENTO</th>
                       <th>MODELO</th>
                       <th>PATRIMÔNIO</th>
@@ -142,17 +129,15 @@ $result = $conn->query($queryEquipamento);
                       <th>OPERADORA</th>
                       <th>NUMERO</th>
                       <th>IMEI</th>
-                      <th>PLANO</th>
                       <th>VALOR</th>
                       <th>ESTADO</th>
                       <th>SITUAÇÃO</th>
-                      <th>STATUS</th>
                       <th>TERMO</th>
                       <th>IP</th>
                       <th>S.O</th>
                       <th>OFFICE</th>
                       <th>AD</th>
-                      <th>AÇÃO</th>
+                      <th class="maior">AÇÃO</th>
                     </tr>
                   </tfoot>';
           }
@@ -161,6 +146,10 @@ $result = $conn->query($queryEquipamento);
             <?php
 
             while ($equipamento = $result->fetch_assoc()) {
+
+              //LIBERADO CHECK-LIITS?
+
+              $liberado = $equipamento['liberado_rh'] == 0 ? 'href="javascript:" onclick="alertar()" class="btn btn-danger btn-sm btn-circle"' : 'href="../front/remequipusuario.php" class="btn btn-warning btn-sm btn-circle"';
 
               //ICONES TERMO
               $equipamento['termo'] == 0 ? $termo = "<i class='fas fa-check-circle fa-2x colorGrenn' style='margin-left: 7px;'></i>" : $termo = "<i class='fas fa-times-circle fa-2x colorRed' style='margin-left: 7px;'></i>";
@@ -207,7 +196,6 @@ $result = $conn->query($queryEquipamento);
 
               if ($_SESSION['perfil'] == 1) { //usuario
                 echo '<tr>';
-                echo $equipamento['id_equipamento'] != NULL ?  '<td>' . $equipamento['id_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['tipo_equipamento'] != NULL ?  '<td>' . $equipamento['tipo_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['modelo'] != NULL ?  '<td>' . $equipamento['modelo'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['patrimonio'] != NULL ?  '<td>' . $equipamento['patrimonio'] . '</td>' :  '<td>-</td>';
@@ -215,28 +203,30 @@ $result = $conn->query($queryEquipamento);
                 echo $equipamento['operadora'] != NULL ?  '<td>' . $equipamento['operadora'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['numero'] != NULL ?  '<td>' . $equipamento['numero'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['imei_chip'] != NULL ?  '<td>' . $equipamento['imei_chip'] . '</td>' :  '<td>-</td>';
-                echo $equipamento['planos_voz'] != NULL || $equipamento['planos_dados'] != NULL ?  '<td>' . $equipamento['planos_voz'] . ',' . $equipamento['planos_dados'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['valor'] != NULL ?  '<td>' . $equipamento['valor'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['estado'] != NULL ?  '<td>' . $equipamento['estado'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['situacao'] != NULL ?  '<td>' . $equipamento['situacao'] . '</td>' :  '<td>-</td>';
-                echo $equipamento['status'] != NULL ?  '<td>' . $equipamento['status'] . '</td>' :  '<td>-</td>';
+
                 echo $equipamento['termo'] != NULL ?  '<td>' . $termo . '</td>' :  '<td>-</td>';
                 /*AÇÂO*/
                 if ($equipamento['id_tipoEquipamento'] == 9 || $equipamento['id_tipoEquipamento'] == 5 || $equipamento['id_tipoEquipamento'] == 8  || $equipamento['id_tipoEquipamento'] == 10) {
                   echo "<td>Técnicos são responsáveis</td>";
                 } else {
-                  echo "<td></td>";
+                  echo '
+                  <td>                  
+                    <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
+                    <a '.$liberado.' title="Remover deste usuário"><i class="fas fa-minus"></i></a>
+                  </td>';
                 }
                 /*FIM AÇÂO*/
                 echo '</tr>';
               } elseif ($_SESSION['perfil'] == 2) {
                 echo '<tr>';
-                echo $equipamento['id_equipamento'] != NULL ?  '<td>' . $equipamento['id_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['tipo_equipamento'] != NULL ?  '<td>' . $equipamento['tipo_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['patrimonio'] != NULL ?  '<td>' . $equipamento['patrimonio'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['empresa'] != NULL ?  '<td>' . $equipamento['empresa'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['numero'] != NULL ?  '<td>' . $equipamento['numero'] . '</td>' :  '<td>-</td>';
-                echo $equipamento['status'] != NULL ?  '<td>' . $equipamento['status'] . '</td>' :  '<td>-</td>';
+
                 echo $equipamento['ip'] != NULL ?  '<td>' . $equipamento['ip'] . '</td>' :  '<td>-</td>';
 
                 if ($equipamento['id_tipoEquipamento'] == 9 || $equipamento['id_tipoEquipamento'] == 8) {
@@ -251,11 +241,9 @@ $result = $conn->query($queryEquipamento);
                 /*AÇÂO*/
                 echo '<td>
                         <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
-                        <a href="#" class="btn btn-warning btn-sm btn-circle" title="Check-List"><i class="fas fa-list-ul"></i></a>
                       </td>';
               } else {
                 echo '<tr>';
-                echo $equipamento['id_equipamento'] != NULL ?  '<td>' . $equipamento['id_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['tipo_equipamento'] != NULL ?  '<td>' . $equipamento['tipo_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['modelo'] != NULL ?  '<td>' . $equipamento['modelo'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['patrimonio'] != NULL ?  '<td>' . $equipamento['patrimonio'] . '</td>' :  '<td>-</td>';
@@ -263,11 +251,10 @@ $result = $conn->query($queryEquipamento);
                 echo $equipamento['operadora'] != NULL ?  '<td>' . $equipamento['operadora'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['numero'] != NULL ?  '<td>' . $equipamento['numero'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['imei_chip'] != NULL ?  '<td>' . $equipamento['imei_chip'] . '</td>' :  '<td>-</td>';
-                echo $equipamento['planos_voz'] != NULL || $equipamento['planos_dados'] != NULL ?  '<td>' . $equipamento['planos_voz'] . ',' . $equipamento['planos_dados'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['valor'] != NULL ?  '<td>' . $equipamento['valor'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['estado'] != NULL ?  '<td>' . $equipamento['estado'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['situacao'] != NULL ?  '<td>' . $equipamento['situacao'] . '</td>' :  '<td>-</td>';
-                echo $equipamento['status'] != NULL ?  '<td>' . $equipamento['status'] . '</td>' :  '<td>-</td>';
+
                 echo $equipamento['termo'] != NULL ?  '<td>' . $termo . '</td>' :  '<td>-</td>';
                 echo $equipamento['ip'] != NULL ?  '<td>' . $equipamento['ip'] . '</td>' :  '<td>-</td>';
 
@@ -283,6 +270,7 @@ $result = $conn->query($queryEquipamento);
                 /*AÇÂO*/
                 echo '<td>
                         <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
+                        <a href="#" class="btn btn-danger btn-sm btn-circle" title="Remover deste usuário"><i class="fas fa-minus"></i></a>
                       </td>';
                 echo '</tr>';
               }
@@ -323,30 +311,13 @@ $result = $conn->query($queryEquipamento);
 </a>
 
 </body>
-<!-- Logout Modal-->
-<div class="modal fade" id="adicionar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Localizar Funcionário</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="../inc/pesquisaFuncionario.php" method="POST" autocomplete="off">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Digite o CPF" id="RegraValida" name="cpf" onkeydown="javascript: fMasc( this, mCPF );">
-            <span class="small-lither">Veja se o funcionário ja está cadastrado!</span>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <button class="btn btn-info" type="submit">Procurar</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
+<script type="text/javascript">
+
+function alertar(){
+  alert("Gere um Check-List antes!");
+}
+
+</script>
 
 </html>
