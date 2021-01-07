@@ -149,7 +149,7 @@ $result = $conn->query($queryEquipamento);
 
               //LIBERADO CHECK-LIITS?
 
-              $liberado = $equipamento['liberado_rh'] == 0 ? 'href="javascript:" onclick="alertar()" class="btn btn-danger btn-sm btn-circle"' : 'href="../front/remequipusuario.php" class="btn btn-warning btn-sm btn-circle"';
+              $liberado = $equipamento['liberado_rh'] == 0 ? 'href="javascript:" onclick="alertar()" class="btn btn-danger btn-sm btn-circle"' : 'href="../front/remequipusuario.php?pagina=3" class="btn btn-warning btn-sm btn-circle"';
 
               //ICONES TERMO
               $equipamento['termo'] == 0 ? $termo = "<i class='fas fa-check-circle fa-2x colorGrenn' style='margin-left: 7px;'></i>" : $termo = "<i class='fas fa-times-circle fa-2x colorRed' style='margin-left: 7px;'></i>";

@@ -55,7 +55,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
   <hr />
   <!-- /.container-fluid -->
   <form action="../inc/termo.php?id=<?= $_GET['id'] ?>" method="POST">
-    <div class="py-4">
+    <div>
       <!-- Page Heading -->
       <h1 class="h6 mb-2 text-gray-800">1-) Emitir termo de todos os equipamentos ?</h1>
       <div class="form-group py-2">
@@ -74,7 +74,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
       </div>
     </div>
 
-    <div class="py-4">
+    <div>
       <!-- Page Heading -->
       <h1 class="h6 mb-2 text-gray-800">2-) Caso queira deixar alguma observação no termo !</h1>
         <div class="form-group py-4">

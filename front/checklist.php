@@ -55,7 +55,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
   <hr />
   <!-- /.container-fluid -->
   <form action="../inc/checklist.php?id=<?= $_GET['id'] ?>" method="POST">
-    <div class="py-4">
+    <div>
       <!-- Page Heading -->
       <h1 class="h6 mb-2 text-gray-800">1-) Este funcionário foi demitido ?</h1>
       <div class="row">
@@ -69,7 +69,7 @@ $resultEquipamento = $conn->query($queryEquipamento);
       </div>
     </div>
 
-    <div class="py-4">
+    <div>
       <!-- Page Heading -->
       <h1 class="h6 mb-2 text-gray-800">2-) Emitir check-list de todos os equipamentos ?</h1>
       <div class="form-group py-2">
