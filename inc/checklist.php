@@ -14,12 +14,11 @@ if(empty($_GET['id'])){
 }
 
 
-//SALVANDO OBSERVAÇÃO
-if($_POST['msn'] != NULL){
-    $insertOBS = "INSERT INTO manager_inventario_obs (id_funcionario, usuario, obs, data_criacao) 
-    VALUES ('".$id_fun."', '".$_SESSION['id']."', '".$_POST['msn']."', '".$dataHoje."')";
+//DEMITINDO FUNCIONÁRIO
+if($_POST['demitido'] == 0){//0=sim; 1=não
+    $updateDemitido= "UPDATE manager_inventario_funcionario SET status = 8 WHERE id_funcionario = ".$id_fun."";
 
-    if(!$resultOBS = $conn->query($insertOBS)){
+    if(!$resultUpdate = $conn->query($updateDemitido)){
         printf("Error[1]: %s\n", $conn->error);
         exit;
     }
@@ -32,11 +31,11 @@ if ($_POST['equip'] == NULL) {
 
      if ($_SESSION["perfil"] == 1) {
 
-        header('location: termopdf.php?id_fun='.$id_fun.'');
+        header('location: checkpdf.php?id_fun='.$id_fun.'');
 
     } else {        
 
-        header('location: termopdftecnicos.php?id_fun='.$id_fun.'');
+        header('location: checkpdftecnicos.php?id_fun='.$id_fun.'');
     }
 
    
@@ -62,11 +61,9 @@ if ($_POST['equip'] == NULL) {
      }
  
      if ($_SESSION["perfil"] == 1) {
-         header('Location: termopdf.php?query=' . $equip . '');
+         header('Location: checkpdf.php?query=' . $equip . '');
      } else {
-         header('Location: termopdftecnicos.php?query=' . $equip . '');
+         header('Location: checkpdftecnicos.php?query=' . $equip . '');
      }
    
 }
-
-

@@ -11,17 +11,22 @@ if ($_GET['id_fun'] == NULL) {
     $queryEquipamento .= $_GET['query'];
     $funcionario = $_GET['query'];
 } else {
-    $queryEquipamento .= " WHERE MIE.id_funcionario = " . $_GET['id_fun'] . "";
-    $funcionario = " WHERE MIE.id_funcionario = " . $_GET['id_fun'] . "";
+    $queryEquipamento .= " WHERE MIE.id_funcionario = ".$_GET['id_fun']."";
+    $funcionario = " WHERE MIF.id_funcionario = ".$_GET['id_fun']."";
 }
 
 $resultEquip = $conn->query($queryEquipamento);
 
 
 //FUNCIONARIO
-$queryColaborador .= $funcionario . " LIMIT 1";
-$resultColaborador = $conn->query($queryColaborador);
+$queryColaboradorPDF .= $funcionario." LIMIT 1";
+$resultColaborador = $conn->query($queryColaboradorPDF);
 $colaborador = $resultColaborador->fetch_assoc();
+
+//OBSERVAÇÕES
+$queryOBS = "SELECT * FROM manager.manager_inventario_obs WHERE id_funcionario = ".$colaborador['id_funcionario']." ORDER BY id_obs DESC LIMIT 1";
+$resultOBS = $conn->query($queryOBS);
+$obs = $resultOBS->fetch_assoc();
 
 
 /*CORPO DO PDF*/
@@ -112,14 +117,14 @@ $html = "
        		</div>
     </div>";
 
-if ($equipamento['obs'] != 0) {
+if ($obs['obs'] != NULL) {
 
     $html .= "
 				<div id='tabela_titulo_principal'>
 					<p class='titulo_segundario'><u>Observações:</u></p>
 				</div>
 				<div id='termo_texto'>
-					<p class='text-sm-left texto'>&raquo; " . $equipamento['obs'] . "</p>
+					<p class='text-sm-left texto'>&raquo; " . $obs['obs'] . "</p>
 				</div>";
 }
 
@@ -170,3 +175,6 @@ $dompdf->render();
 
 // Output the generated PDF to Browser
 $dompdf->stream('termo_' . $colaborador['nome'] . '.pdf', array("Attachment" => 1));//1 - Download 0 - Previa
+
+$conn->close();
+?>
