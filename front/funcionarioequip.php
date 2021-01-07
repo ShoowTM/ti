@@ -210,7 +210,7 @@ $result = $conn->query($queryEquipamento);
                 echo $equipamento['termo'] != NULL ?  '<td>' . $termo . '</td>' :  '<td>-</td>';
                 /*AÇÂO*/
                 if ($equipamento['id_tipoEquipamento'] == 9 || $equipamento['id_tipoEquipamento'] == 5 || $equipamento['id_tipoEquipamento'] == 8  || $equipamento['id_tipoEquipamento'] == 10) {
-                  echo "<td>Técnicos são responsáveis</td>";
+                  echo "<td>Ação não permitida</td>";
                 } else {
                   echo '
                   <td>                  
