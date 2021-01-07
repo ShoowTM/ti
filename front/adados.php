@@ -30,62 +30,7 @@ if (!empty($_SESSION['id_funcionario'])) {
   </div>
 
 
-
-
-  <div class="row" style="margin-top: 30px; display: <?= empty($_SESSION['nomeFuncionario']) ? "none" : "flex" ?>;">
-    <div class="col-xl-3 col-md-6 mb-4">
-      <a href="funcionarioequip.php?pagina=3" class="text-decoration">
-        <div class="card border-left-success shadow h-100 py-2" style="background-color: white">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Equipamentos</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">Quantidade: <?= $countEquip['quantidade'] ?></div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-laptop fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-xl-3 col-md-6 mb-4">
-      <a href="funcionariohistorico.php?pagina=3" class="text-decoration">
-        <div class="card border-left-warning shadow h-100 py-2" style="background-color: white">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Histórico</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">Funcionário</div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-list fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-xl-5 col-md-6 mb-4">
-      <a href="#" class="text-decoration">
-        <div class="card border-left-info shadow h-100 py-2" style="background-color: white">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Arquivos</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">Notas Fiscais / Documentos</div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-file fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-  <!-- /.container-fluid -->
+ 
 
   <div class="col-lg-6 left">
     <!-- Circle Buttons -->
@@ -117,7 +62,7 @@ if (!empty($_SESSION['id_funcionario'])) {
           <div class="btn btn-primary btn-icon-split menu roscovo mb-3 ">
             <label for="formFile" class="labelinfo form-label">
               <span class="botaoanexo icon text-white-50">
-                <i class="fas fa-plus "></i>
+                <i class="fas fa-file-upload "></i>
               </span>
               <span class="textoanexar">
                 Anexar Arquivo
