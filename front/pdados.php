@@ -11,7 +11,6 @@ require_once('../inc/permissoes.php');
   <h1 class="menu mb-6 text-gray-800">
     <a href="front.php?pagina=1"><i class="fas fa-home"></i> Home</a> /
     <i class="fab fa-google"></i> Pesquisa
-    <!--- <span class="float-rigth"><a href="colaboradores.php?pagina=3" id="atualiz"><i class="fas fa-sync-alt"></i> Atualizar</a></span> --->
   </h1>
   <hr />
 
@@ -28,8 +27,7 @@ require_once('../inc/permissoes.php');
         <div class="input-group">
           <input type="text" class="borderradius form-control bg-blue border-0 small" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <!--<button class="btn btn-dark" type="button"> 
-                    <i class="fas fa-search fa-sm"></i>-->
+           
             </button>
           </div>
         </div>
@@ -44,7 +42,7 @@ require_once('../inc/permissoes.php');
         </span>
         <span class="text">Pesquisar</span>
       </a>
-      <a href="#" class="btn btn-primary btn-icon-split menu">
+      <a href="adados.php?pagina=4" class="btn btn-primary btn-icon-split menu">
         <span class="icon text-white-50">
           <i class="fas fa-plus"></i>
         </span>
