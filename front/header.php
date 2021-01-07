@@ -31,6 +31,9 @@ require_once('../inc/permissoes.php');
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 
+     <!-- Formulario Avançado -->
+    <script src="../ckeditor/ckeditor.js"></script>
+    
 </head>
 
 <body id="page-top" onload="moveRelogio()">
@@ -92,7 +95,7 @@ require_once('../inc/permissoes.php');
                 </div>
             </li>
 
-                    <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item" style="display: <?= $relatorio ?>;">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-clipboard"></i>
@@ -236,6 +239,7 @@ require_once('../inc/permissoes.php');
                 <!-- Page level custom scripts -->
                 <script src="../js/demo/datatables-demo.js"></script>
 
+              
                 <!-- Logout Modal-->
                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
