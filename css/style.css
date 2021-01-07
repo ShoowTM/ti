@@ -149,3 +149,23 @@ ul {
 .botaoanexo {
     padding: 0.175rem .75rem !important;
 }
+
+.borderradius {
+    border-radius: 10px !important ;
+}
+
+.menu{
+    font-size: 14px;
+}
+
+.textCenterTable{
+    margin-left: 24%;
+}
+
+.textCenterModal{
+    margin-left: 20%;
+}
+
+.textCenterTela{
+    margin-left: 35%;s
+}
