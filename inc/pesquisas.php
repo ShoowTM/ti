@@ -70,7 +70,8 @@ MIE.status AS id_status,
 MSE.nome AS status,
 MIE.termo,
 MIE.ip,
-MIE.dominio
+MIE.dominio,
+MIE.liberado_rh
 FROM
 manager_inventario_equipamento MIE
 LEFT JOIN

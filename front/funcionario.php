@@ -78,16 +78,16 @@ if (!empty($_SESSION['id_funcionario'])) {
   </div>
   <!-- /.container-fluid -->
   <hr>
-
-  <span class="float-rigth" style="display: <?= $_SESSION['desativar_cpf'] == 1 ? "block" : "none" ?>;">
-    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#desativar" title="Excluir Colaborador"><i class="fas fa-user-times colorRed"></i></a>
-  </span>
   <div class="col-lg-6 left">
     <!-- Circle Buttons -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary"><?= empty($_SESSION['nomeFuncionario']) ? "Novo Funcionário" : "Editando Colaborador" ?></h6>
-      </div>
+        <h6 class="m-0 font-weight-bold text-primary"><?= empty($_SESSION['nomeFuncionario']) ? "Novo Funcionário" : "Editando Colaborador" ?>
+        <a  href="#" data-toggle="modal" data-target="#desativar" class="float-right btn-danger" title="Excluir Colaborador" style="padding: 8px; border-radius: 5px; display: <?= $_SESSION['desativar_cpf'] == 1 ? "block" : "none" ?>;">
+            <i class="fas fa-user-times"></i>
+          </a>
+        </h6>
+        </div>
       <div class="card-body">
         <form action="<?= empty($_SESSION['nomeFuncionario']) ? "../inc/novofuncionario.php" : "../inc/editefuncionario.php?id=" . $_SESSION['id_funcionario'] . "" ?>" method="POST">
           <div class="form-group">
@@ -232,6 +232,9 @@ if (!empty($_SESSION['id_funcionario'])) {
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
+      </div>
+      <div class="modal-body">
+      <span class="textCenterModal"><?=$_SESSION['nomeFuncionario']?></span>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>

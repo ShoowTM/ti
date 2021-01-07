@@ -133,7 +133,7 @@ $demitido = $resultDemitido->fetch_assoc();
               <th>DEPARTAMENTO</th>
               <th>EMPRESA</th>
               <th>EQUIPAMENTOS</th>
-              <th class="maior"> STATUS</th>
+              <th class="maior">STATUS</th>
               <th class="maior">AÇÃO</th>
             </tr>
           </tfoot>
