@@ -91,7 +91,6 @@ $result = $conn->query($queryEquipamento);
                   <th>PATRIMÔNIO</th>
                   <th>FILIAL</th>
                   <th>NUMERO</th>
-                  <th>STATUS</th>
                   <th>IP</th>
                   <th>S.O</th>
                   <th>OFFICE</th>
@@ -148,7 +147,10 @@ $result = $conn->query($queryEquipamento);
             while ($equipamento = $result->fetch_assoc()) {
 
               //LIBERADO CHECK-LIITS?
+              if($equipamento['id_tipoEquipamento'] == 8){//desktop
 
+              }
+              
               $liberado = $equipamento['liberado_rh'] == 0 ? 'href="javascript:" onclick="alertar()" class="btn btn-danger btn-sm btn-circle"' : 'href="../front/remequipusuario.php?pagina=3" class="btn btn-warning btn-sm btn-circle"';
 
               //ICONES TERMO
@@ -215,12 +217,12 @@ $result = $conn->query($queryEquipamento);
                   echo '
                   <td>                  
                     <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
-                    <a '.$liberado.' title="Remover deste usuário"><i class="fas fa-minus"></i></a>
+                    <a ' . $liberado . ' title="Remover deste usuário"><i class="fas fa-minus"></i></a>
                   </td>';
                 }
                 /*FIM AÇÂO*/
                 echo '</tr>';
-              } elseif ($_SESSION['perfil'] == 2) {
+              } elseif ($_SESSION['perfil'] == 2) {//tecnicos
                 echo '<tr>';
                 echo $equipamento['tipo_equipamento'] != NULL ?  '<td>' . $equipamento['tipo_equipamento'] . '</td>' :  '<td>-</td>';
                 echo $equipamento['patrimonio'] != NULL ?  '<td>' . $equipamento['patrimonio'] . '</td>' :  '<td>-</td>';
@@ -239,9 +241,17 @@ $result = $conn->query($queryEquipamento);
                   echo '<td>-</td>';
                 }
                 /*AÇÂO*/
-                echo '<td>
-                        <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
-                      </td>';
+                if ($equipamento['id_tipoEquipamento'] == 9 || $equipamento['id_tipoEquipamento'] == 5 || $equipamento['id_tipoEquipamento'] == 8  || $equipamento['id_tipoEquipamento'] == 10) {
+                  echo '
+                  <td>            
+                    <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
+                    <a ' . $liberado . ' title="Remover deste usuário"><i class="fas fa-minus"></i></a>
+                  </td>';
+                } else {
+                  echo "<td>Ação não permitida</td>";
+                }
+                /*FIM AÇÂO*/
+                echo '</tr>';
               } else {
                 echo '<tr>';
                 echo $equipamento['tipo_equipamento'] != NULL ?  '<td>' . $equipamento['tipo_equipamento'] . '</td>' :  '<td>-</td>';
@@ -267,11 +277,12 @@ $result = $conn->query($queryEquipamento);
                   echo '<td>-</td>';
                   echo '<td>-</td>';
                 }
-                /*AÇÂO*/
-                echo '<td>
-                        <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm btn-circle" title="Remover deste usuário"><i class="fas fa-minus"></i></a>
-                      </td>';
+                  echo '
+                  <td>                  
+                    <a href="#" class="btn btn-success btn-sm btn-circle" title="Editar/Visualizar"><i class="fas fa-pen"></i></a>
+                    <a ' . $liberado . ' title="Remover deste usuário"><i class="fas fa-minus"></i></a>
+                  </td>';
+                /*FIM AÇÂO*/
                 echo '</tr>';
               }
             }
@@ -313,11 +324,9 @@ $result = $conn->query($queryEquipamento);
 </body>
 
 <script type="text/javascript">
-
-function alertar(){
-  alert("Gere um Check-List antes!");
-}
-
+  function alertar() {
+    alert("Gerar um Check-List antes!");
+  }
 </script>
 
 </html>
